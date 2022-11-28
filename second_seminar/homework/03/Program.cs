@@ -3,16 +3,16 @@
 string ThirdNum(int num)
 {
     if (num < 100)
-    return "третьей цифры нет";
+        return "третьей цифры нет";
 
     else if (num > 99 && num < 1000)
-    return $"{num % 10}";
+        return $"{num % 10}";
 
     else
-    while(num > 999)
-    {
-        num = num/10;
-    }
+        while (num > 999)
+        {
+            num = num / 10;
+        }
     return $"{num % 10}";
 }
 
