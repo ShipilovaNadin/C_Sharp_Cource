@@ -15,5 +15,3 @@ Console.Write("Введите число: ");
 
 Console.WriteLine(SumNums(int.Parse(Console.ReadLine())));
 
-// Console.WriteLine("Введите число: ");
-// int A = int.Parse(Console.ReadLine());
