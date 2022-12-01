@@ -11,5 +11,5 @@ int N = int.Parse(a);
 //     Console.Write($"{NegN} ");
 //     NegN +=1;
 // }
-for (int NegN = (-1)*N; NegN <= N: NegN++)
+for (int NegN = (-1)*N; NegN <= N; NegN++)
 Console.Write(NegN + " ");
