@@ -2,13 +2,17 @@
 
 int SumNums(int num)
 {
-    int all_sum = 0;
-    for (int i = 1; i <= num; i++)
+     if(num == 0)
     {
-        all_sum += i;
+        return(1);
     }
-
-    return all_sum;
+    int count = 0;
+    while (num > 0)
+    {
+        num = num / 10;
+        count++;
+    }
+    return count;
 }
 
 Console.Write("Введите число: ");

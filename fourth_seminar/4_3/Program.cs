@@ -10,5 +10,5 @@ void Massiv(int n)
     }   
 }
 
-Console.WriteLine("Введите число:");
+Console.Write("Введите число:");
 Massiv(int.Parse(Console.ReadLine()));
