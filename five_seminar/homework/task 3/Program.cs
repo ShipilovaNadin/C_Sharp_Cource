@@ -20,28 +20,44 @@ double[] Mass()
     return arr;
 }
 
-void SelectionSort(double[] array)
+void MinMax(double [] array)
 {
-    for (int i = 0; i < array.Length - 1; i++)
+    double max = array[0];
+    double min = array[0];
+    for (int i = 0; i < array.Length; i++)
     {
-        int minPosition = i;
-        for (int j = i + 1; j < array.Length; j++)
-        {
-            if (array[j] < array[minPosition]) minPosition = j;
-        }
-        double temporary = array[i];
-        array[i] = array[minPosition];
-        array[minPosition] = temporary;
+        if (array[i] < min)
+        min = array[i];
+        if (array[i] > max)
+        max = array[i];
     }
+    Console.WriteLine($"Разница между максимальным и минимальным элементом массива равна: {max-min}");
 }
-void DifMaxMix(double[] array)
-{
-    double result = array[array.Length - 1] - array[0];
-    Console.WriteLine($"Разница между максимальным и минимальным элементом массива равна: {result}");
-}
+
+
+// void SelectionSort(double[] array)
+// {
+//     for (int i = 0; i < array.Length - 1; i++)
+//     {
+//         int minPosition = i;
+//         for (int j = i + 1; j < array.Length; j++)
+//         {
+//             if (array[j] < array[minPosition]) minPosition = j;
+//         }
+//         double temporary = array[i];
+//         array[i] = array[minPosition];
+//         array[minPosition] = temporary;
+//     }
+// }
+// void DifMaxMix(double[] array)
+// {
+//     double result = array[array.Length - 1] - array[0];
+//     Console.WriteLine($"Разница между максимальным и минимальным элементом массива равна: {result}");
+// }
 
 double[] arr_1 = Mass();
 Print(arr_1);
-SelectionSort(arr_1);
-Print(arr_1);
-DifMaxMix(arr_1);
+//SelectionSort(arr_1);
+MinMax(arr_1);
+//Print(arr_1);
+//DifMaxMix(arr_1);

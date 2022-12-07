@@ -22,7 +22,6 @@ int[] Mass(int size, int from, int to)
 void SumNegPosition(int[] arr)
 {
     int result = 0;
-
     for (int i = 0; i < arr.Length; i++)
     {
         if (i % 2 == 0)
@@ -31,17 +30,13 @@ void SumNegPosition(int[] arr)
     Console.WriteLine($"Сумма элементов, стоящих на нечетных позициях равна: {result}");
 }
 
-int[] arr_1 = Mass(int.Parse(Console.ReadLine()),
-                   int.Parse(Console.ReadLine()),
-                   int.Parse(Console.ReadLine()));
-
-// пытаюсь компактно включить в вызов значения с консоли текст, но выдет ошибку...(спросить на семинаре)
-// int[] arr_1 = Mass
-//     (
-//     Console.WriteLine("Введите длину массива: " + int.Parse(Console.ReadLine())),
-//     Console.WriteLine("Введите первый элемент массива: " + int.Parse(Console.ReadLine())),
-//     Console.WriteLine("Введите последний элемент массива: " + int.Parse(Console.ReadLine()))
-//     );
+    Console.WriteLine("Введите длину массива: ");
+    int leght = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите первый элемент массива: ");
+    int i = int.Parse(Console.ReadLine());
+    Console.WriteLine("Введите последний элемент массива: ");
+    int j = int.Parse(Console.ReadLine());
+int[] arr_1 = Mass(leght, i, j);
 Print(arr_1);
 SumNegPosition(arr_1);
 
