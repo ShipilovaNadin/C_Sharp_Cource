@@ -2,32 +2,27 @@
 // 4; массив [6, 7, 19, 345, 3] -> нет 
 // 3; массив [6, 7, 19, 345, 3] -> да
 
-void Print(int[] arr)
+void InputArray(int[] array)
 {
-    int size = arr.Length;
-
-    for (int i = 0; i < size; i++)
-        Console.Write($"{arr[i]} ");
-    Console.WriteLine();
+    for (int i = 0; i < array.Length; i++)
+        array[i] = new Random().Next(-9, 10);
 }
 
-int[] Mass(int size)
+string ReleaseArray(int[] array, int k)
 {
-    int[] arr = new int[size];
-
-    for (int i = 0; i < size; i++)
-        arr[i] = new Random().Next(-100, 100);
-    return arr;
-}
-
-string Sertch (int[] arr, int num)
-{
-    for (int i = 0; i < arr_1.Length; i++)
+    for (int i = 0; i < array.Length; i++)
     {
-        arr_1[i] = - arr_1[i];
+        if (array[i] == k)
+        return "yes";
     }
+    return "no";
 }
 
-int[] arr_1 = Mass(int.Parse(Console.ReadLine()));
-Print(arr_1);
-Console.WriteLine(Sertch(arr_1, int.Parse(Console.ReadLine())));
+Console.Write("Введите количество элементов массива: ");
+int n = Convert.ToInt32(Console.ReadLine());
+int[] array = new int[n];
+InputArray(array);
+Console.WriteLine($"Начальнй массив: [{string.Join(", ", array)}]");
+Console.Write("Введите число, которое нужно найти в массиве: ");
+int k = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine(ReleaseArray(array, k));

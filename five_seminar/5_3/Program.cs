@@ -1,39 +1,39 @@
-﻿// 2. Задайте массив. Напишите программу, которая определяет,
-//    присутствует ли заданное число в массиве.
+﻿// Задача 3.  Задайте одномерный массив из 123 случайных чисел.
+// Найдите количество элементов массива, значения которых лежат в отрезке [10,99].
+// Пример для массива из 5, а не 123 элементов. В своём решении сделайте для 123
+// [5, 18, 123, 6, 2] -> 1
+// [1, 2, 3, 6, 2] -> 0
+// [10, 11, 12, 13, 14] -> 5
 
-void Print(int[] arr)
+// void Print(int[] arr)
+// {
+//     int size = arr.Length;
+
+//     for (int i = 0; i < size; i++)
+//         Console.Write($"{arr[i]} ");
+//     Console.WriteLine();
+// }
+
+void InputArray(int[] array)
 {
-    int size = arr.Length;
-
-    for (int i = 0; i < size; i++)
-        Console.Write($"{arr[i]} ");
-    Console.WriteLine();
+    for (int i = 0; i < array.Length; i++)
+        array[i] = new Random().Next(-100, 100);
 }
 
-int[] ArrayNums(int size, int start, int last)
+int CountNum(int[] array)
 {
-    int[] arr = new int[size];
-
-    for (int i = 0; i < size; i++)
-        arr[i] = new Random().Next(start, last + 1);
-    return arr;
-}
-
-int CountDiap(int[] arr)
-{
-    int count = 0;
-    for (int i = 0; i < arr.Length; i++)
+    int result = 0;
+    for (int i = 0; i < array.Length; i++)
     {
-        if (arr[i] >= 10 && arr[i] <= 99)
-        {
-            count++;
-        }
+        if (array[i] >= 10 && array[i] <= 99)
+        result++;
     }
-    return count;
+    return result;
 }
 
-int[] arr_1 = ArrayNums(int.Parse(Console.ReadLine()),
-                        int.Parse(Console.ReadLine()),
-                        int.Parse(Console.ReadLine()));
-Print(arr_1);
-Console.Write(CountDiap(arr_1));
+//Console.Write("Введите количество элементов массива: ");
+// int n = Convert.ToInt32(Console.ReadLine());
+int[] array = new int[123];
+InputArray(array);
+Console.WriteLine($"Начальнй массив: [{string.Join(", ", array)}]");
+Console.WriteLine("Количество элементов массива в заданном отрезке: " + CountNum(array));
