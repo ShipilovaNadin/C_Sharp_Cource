@@ -20,18 +20,18 @@ double[] Mass()
     return arr;
 }
 
-void MinMax(double [] array)
+void MinMax(double[] array)
 {
     double max = array[0];
     double min = array[0];
-    for (int i = 0; i < array.Length; i++)
+    for (int i = 1; i < array.Length; i++) // начинаем с элемента с индексом 1 так как мы уже взяли с индексом 0 и нет смысла его сравнивать с самим собой
     {
         if (array[i] < min)
-        min = array[i];
-        if (array[i] > max)
-        max = array[i];
+            min = array[i];
+        else if (array[i] > max)
+            max = array[i];
     }
-    Console.WriteLine($"Разница между максимальным и минимальным элементом массива равна: {max-min}");
+    Console.WriteLine($"Разница между максимальным и минимальным элементом массива равна: {max - min}");
 }
 
 
