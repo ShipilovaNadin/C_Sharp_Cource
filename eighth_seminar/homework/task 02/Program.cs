@@ -1,4 +1,4 @@
-﻿// Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+﻿// Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 
 void Print(int[,] arr)
 {
@@ -26,23 +26,31 @@ int[,] MassNums(int row, int column, int from, int to)
     return arr;
 }
 
-void AverageColumn(int[,] arr)
+int[]SummaRowElement (int[,] arr)
 {
-    double row_size = arr.GetLength(0);
-    double column_size = arr.GetLength(1);
-    double sum = 0;
-
-    for (int j = 0; j < column_size; j++)
-    {
-    sum = 0;    
+    int row_size = arr.GetLength(0);
+    int column_size = arr.GetLength(1);
+    int[] sum = new int [row_size];
     for (int i = 0; i < row_size; i++)
+    {
+        for (int j = 0; j < column_size; j++)
         {
-        sum += arr[i,j];
+            sum[j] += arr[i,j];
         }
-     Console.WriteLine($"средняя арифмитическая в колонке {j} ровна {Math.Round(sum/column_size, 2)}");
-    }    
+    }
+    return sum;
 }
 
+void FindMin(int[] arr)
+{
+    int min = 0;
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i] < min) min = i;
+    }
+    Console.WriteLine($"Номер строки с наименьшей суммой элементов: {min+1}");
+}
+    
 Console.Write("Enter the number of rows: ");
 int row = int.Parse(Console.ReadLine());
 Console.Write("Enter the number of columns: ");
@@ -52,4 +60,5 @@ int[,] arr_1 = MassNums(row, column,
                         int.Parse(Console.ReadLine()),
                         int.Parse(Console.ReadLine()));
 Print(arr_1);
-AverageColumn(arr_1);
+int [] mass = SummaRowElement(arr_1);
+FindMin(mass);

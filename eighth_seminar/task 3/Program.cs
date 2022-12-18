@@ -1,5 +1,5 @@
-﻿// Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
-
+﻿// Составить частотный словарь элементов двумерного массива. Частотный словарь содержит
+// информацию о том, сколько раз встречается элемент входных данных. Значения элементов массива 0..9
 void Print(int[,] arr)
 {
     int row_size = arr.GetLength(0);
@@ -26,21 +26,21 @@ int[,] MassNums(int row, int column, int from, int to)
     return arr;
 }
 
-void AverageColumn(int[,] arr)
+void PrintMass(int[] arr)
 {
-    double row_size = arr.GetLength(0);
-    double column_size = arr.GetLength(1);
-    double sum = 0;
+    for (int i = 0; i < arr.Length; i++)
+        Console.WriteLine($"{i} meets: {arr[i]}");
+    Console.WriteLine();
+}
 
-    for (int j = 0; j < column_size; j++)
-    {
-    sum = 0;    
-    for (int i = 0; i < row_size; i++)
-        {
-        sum += arr[i,j];
-        }
-     Console.WriteLine($"средняя арифмитическая в колонке {j} ровна {Math.Round(sum/column_size, 2)}");
-    }    
+int[] FrequencyDict(int[,] arr)
+{
+    int[] freq = new int[10];
+
+    foreach (int item in arr)
+        freq[item] += 1;
+
+    return freq; 
 }
 
 Console.Write("Enter the number of rows: ");
@@ -52,4 +52,5 @@ int[,] arr_1 = MassNums(row, column,
                         int.Parse(Console.ReadLine()),
                         int.Parse(Console.ReadLine()));
 Print(arr_1);
-AverageColumn(arr_1);
+int[] mass = FrequencyDict(arr_1);
+PrintMass(mass);

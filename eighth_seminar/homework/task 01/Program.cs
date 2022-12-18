@@ -1,4 +1,4 @@
-﻿// Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+﻿// Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
 void Print(int[,] arr)
 {
@@ -26,21 +26,26 @@ int[,] MassNums(int row, int column, int from, int to)
     return arr;
 }
 
-void AverageColumn(int[,] arr)
+void SortingFromMaxToMin(int[,] arr)
 {
-    double row_size = arr.GetLength(0);
-    double column_size = arr.GetLength(1);
-    double sum = 0;
+    int row = arr.GetLength(0);
+    int column = arr.GetLength(1);
 
-    for (int j = 0; j < column_size; j++)
+    for (int i = 0; i < row; i++)
     {
-    sum = 0;    
-    for (int i = 0; i < row_size; i++)
+        for (int j = 0; j < column; j++)
         {
-        sum += arr[i,j];
+            for (int k = 0; k < column - 1; k++)
+            {
+                if (arr[i, k] < arr[i, k + 1])
+                {
+                    int temp = arr[i, k + 1];
+                    arr[i, k + 1] = arr[i, k];
+                    arr[i, k] = temp;
+                }
+            }
         }
-     Console.WriteLine($"средняя арифмитическая в колонке {j} ровна {Math.Round(sum/column_size, 2)}");
-    }    
+    }
 }
 
 Console.Write("Enter the number of rows: ");
@@ -52,4 +57,5 @@ int[,] arr_1 = MassNums(row, column,
                         int.Parse(Console.ReadLine()),
                         int.Parse(Console.ReadLine()));
 Print(arr_1);
-AverageColumn(arr_1);
+SortingFromMaxToMin(arr_1);
+Print(arr_1);

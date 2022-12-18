@@ -1,4 +1,5 @@
-﻿// Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+﻿// Задайте двумерный массив. Напишите программу, которая заменяет строки на столбцы. В случае, если это
+// невозможно, программа должна вывести сообщение для пользователя.
 
 void Print(int[,] arr)
 {
@@ -26,21 +27,26 @@ int[,] MassNums(int row, int column, int from, int to)
     return arr;
 }
 
-void AverageColumn(int[,] arr)
+    void ChangeUp(int[,] arr)
 {
-    double row_size = arr.GetLength(0);
-    double column_size = arr.GetLength(1);
-    double sum = 0;
-
-    for (int j = 0; j < column_size; j++)
+    int row = arr.GetLength(0);
+    int column = arr.GetLength(1);
+    if (row == column)
     {
-    sum = 0;    
-    for (int i = 0; i < row_size; i++)
+        for (int i = 0; i < row; i++)
         {
-        sum += arr[i,j];
+            for (int j = 0; j < i; j++)
+            {
+                (arr[i,j],arr[j,i]) = (arr[j,i],arr[i,j]);
+            }
+            Console.WriteLine();
         }
-     Console.WriteLine($"средняя арифмитическая в колонке {j} ровна {Math.Round(sum/column_size, 2)}");
-    }    
+    }
+    else
+    {
+        Console.WriteLine("Замена невозможна");
+    }
+
 }
 
 Console.Write("Enter the number of rows: ");
@@ -52,4 +58,5 @@ int[,] arr_1 = MassNums(row, column,
                         int.Parse(Console.ReadLine()),
                         int.Parse(Console.ReadLine()));
 Print(arr_1);
-AverageColumn(arr_1);
+ChangeUp(arr_1);
+Print(arr_1);
