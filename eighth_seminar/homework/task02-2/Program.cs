@@ -1,4 +1,5 @@
-﻿void Print(int[,] arr)
+﻿// поиск строки массива с нименьшей суммой элементов
+void Print(int[,] arr)
 {
     int row_size = arr.GetLength(0);
     int column_size = arr.GetLength(1);
