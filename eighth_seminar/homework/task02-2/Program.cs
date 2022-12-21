@@ -1,6 +1,4 @@
-﻿// Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
-
-void Print(int[,] arr)
+﻿void Print(int[,] arr)
 {
     int row_size = arr.GetLength(0);
     int column_size = arr.GetLength(1);
@@ -26,26 +24,38 @@ int[,] MassNums(int row, int column, int from, int to)
     return arr;
 }
 
-void SortingFromMaxToMin(int[,] arr)
+int[] SummaRowElement(int[,] arr)
 {
     int row = arr.GetLength(0);
     int column = arr.GetLength(1);
-
+    int[] sum = new int[row];
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < column; j++)
         {
-            for (int k = 0; k < column - 1; k++)
-            {                                       // for (int k = 0; k < column_size - j -1; k++) так мы делаем ограничение чтобы не выйти за границу массива
-                if (arr[i, k] < arr[i, k + 1])      // if (arr[i, k]<arr[i, k])
-                {                                   // 
-                    int temp = arr[i, k + 1];
-                    arr[i, k + 1] = arr[i, k];
-                    arr[i, k] = temp;
-                }
-            }
+            sum[i] += arr[i, j];
         }
     }
+    return sum;
+}
+
+void Print02(int[] arr)
+{
+    int size = arr.Length;
+
+    for (int i = 0; i < size; i++)
+        Console.Write($"{arr[i]} ");
+    Console.WriteLine();
+}
+void FindMin(int[] arr)
+{
+    int min = 0;
+    for (int i = 1; i < arr.Length; i++)
+    {
+        if (arr[i] < arr[min]) min = i;
+
+    }
+    Console.WriteLine($"Номер строки с наименьшей суммой элементов: {min + 1}");
 }
 
 Console.Write("Enter the number of rows: ");
@@ -57,5 +67,7 @@ int[,] arr_1 = MassNums(row, column,
                         int.Parse(Console.ReadLine()),
                         int.Parse(Console.ReadLine()));
 Print(arr_1);
-SortingFromMaxToMin(arr_1);
-Print(arr_1);
+int[] mass = SummaRowElement(arr_1);
+Print02(mass);
+FindMin(mass);
+
